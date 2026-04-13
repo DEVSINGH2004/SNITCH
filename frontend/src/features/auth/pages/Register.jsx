@@ -118,6 +118,12 @@ const Register = () => {
           >
             Create Account
           </button>
+          <a  
+            href="/api/auth/google"
+            className="w-full py-4 mt-4 bg-[#22c55e] text-black hover:bg-[#16a34a] font-bold text-xs tracking-[0.2em] uppercase rounded-none transition-colors"
+          >
+            Continue With Google
+          </a>
         </form>
 
         <div className="mt-10 text-center">

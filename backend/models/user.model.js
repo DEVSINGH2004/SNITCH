@@ -13,11 +13,13 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: function () {
+            return !this.googleId;
+        },
     },
     contactNo: {
         type: String,
-        required: true,
+        required: false,
         unique: true,
     },
     role: {
@@ -25,6 +27,9 @@ const userSchema = new mongoose.Schema({
         enum: ['buyer', 'seller'],
         default: 'buyer',
     },
+    googleId: {
+        type: String,
+    }
 });
 
 userSchema.pre('save', async function () {

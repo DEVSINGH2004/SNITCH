@@ -71,3 +71,26 @@ export async function loginUser(req, res) {
         return res.status(500).json({ message: "Server error" });
     }
 }
+
+export const googleCallback = async (req, res) => {
+    const {id, displayName, emails, photos} = req.user;
+    const email = emails[0].value;
+    let user = await userModel.findOne({ email });
+    if (!user) {
+        user = await userModel.create({
+            email,
+            fullname: displayName,
+            googleId: id,
+        })
+
+        const token = jwt.sign({
+            id: user._id,
+        }, config.JWT_SECRET_KEY, {
+            expiresIn: "7d"
+        })
+        res.cookie('token', token);
+        res.redirect('http://localhost:5173/');
+        
+    } 
+
+}

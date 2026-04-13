@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.js';
 
 const Login = () => {
@@ -7,6 +7,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
   const { loginHook } = useAuth();
 
   const handleChange = (e) => {
@@ -25,6 +26,7 @@ const Login = () => {
         email: formData.email,
         password: formData.password,
     });
+    navigate('/');
   };
 
   return (
