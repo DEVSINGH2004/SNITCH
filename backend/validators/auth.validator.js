@@ -12,7 +12,7 @@ function validateRequest(req, res, next) {
 export const validateRegisterUser = [
     body("email")
         .isEmail().withMessage("Invalid email format"),
-    body("contact")
+    body("contactNo")
         .notEmpty().withMessage("Contact is required")
         .matches(/^\d{10}$/).withMessage("Contact must be a 10-digit number"),
     body("password")
@@ -21,5 +21,13 @@ export const validateRegisterUser = [
         .notEmpty().withMessage("Full name is required")
         .isLength({ min: 3 }).withMessage("Full name must be at least 3 characters long"),
 
+    validateRequest
+]
+
+export const validateLoginUser = [
+    body("email")
+        .isEmail().withMessage("Invalid email format"),
+    body("password")
+        .isLength({ min: 6 }).withMessage("Password must be at least 6 characters long"),
     validateRequest
 ]
