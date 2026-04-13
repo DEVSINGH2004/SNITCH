@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import ContinueWithGoogle from '../components/ContinueWithGoogle.jsx';
 import { useAuth } from '../hooks/useAuth.js';
 
 const Login = () => {
@@ -76,7 +77,7 @@ const Login = () => {
             Sign In
           </button>
         </form>
-
+        <ContinueWithGoogle />
         <div className="mt-10 text-center">
           <p className="text-xs text-neutral-500 tracking-wider">
             New to Snitch?{' '}

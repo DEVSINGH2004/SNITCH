@@ -73,7 +73,8 @@ export async function loginUser(req, res) {
 }
 
 export const googleCallback = async (req, res) => {
-    const {id, displayName, emails, photos} = req.user;
+    console.log(req.user)
+    const {id, displayName, emails} = req.user;
     const email = emails[0].value;
     let user = await userModel.findOne({ email });
     if (!user) {
@@ -81,16 +82,18 @@ export const googleCallback = async (req, res) => {
             email,
             fullname: displayName,
             googleId: id,
-        })
+        }) 
+        
+    } 
 
-        const token = jwt.sign({
+     const token = jwt.sign({
             id: user._id,
         }, config.JWT_SECRET_KEY, {
             expiresIn: "7d"
         })
         res.cookie('token', token);
+
         res.redirect('http://localhost:5173/');
-        
-    } 
 
 }
+
