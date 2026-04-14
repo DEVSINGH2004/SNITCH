@@ -5,7 +5,7 @@ import Login from "../features/auth/pages/Login";
 export const routes = createBrowserRouter([
     {
         path: "/",
-        element: <h1>Hello world</h1>,
+        element: <h1>Snitch - Home Page</h1>,
     },
     {
         path: "/register",
