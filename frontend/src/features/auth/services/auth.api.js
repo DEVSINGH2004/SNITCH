@@ -4,7 +4,7 @@ const apiAuth = axios.create({
     withCredentials: true,
 })
 
-export const handleRegister = async ({fullname,email, password,contactNo,joinAsSeller=false}) => {
+export const handleRegister = async ({fullname,email, password,contactNo,joinAsSeller})  => {
     const response  = await apiAuth.post('/register', {
         fullname,
         email,

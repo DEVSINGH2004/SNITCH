@@ -1,6 +1,6 @@
 import express from 'express';
 import {config} from '../config/config.js';
-
+import productRouter from '../routes/product.route.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
@@ -31,6 +31,6 @@ app.get('/', (req, res) => {
   res.json({ message: "server is running on port 3000" });
 });
 app.use('/api/auth', authRouter);
-
+app.use('/api/products', productRouter);
 
 export default app;

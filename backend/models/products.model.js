@@ -20,16 +20,20 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: {
-        type: String,
-        required: true,
-    },
+    image: [
+        {
+            url:{
+                type: String,
+                required: true,
+            }
+        }
+    ],
     seller: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
         required: true,
     },
-})
+}, {timestamps: true})
 
 const productModel = mongoose.model('product', productSchema);
 
