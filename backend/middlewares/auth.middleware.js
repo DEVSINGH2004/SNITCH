@@ -9,7 +9,8 @@ export async function authMiddleware(req, res, next) {
             message: 'Unauthorized',
         })
     }
-    const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
+    try{
+        const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
     const user = await userModel.findById(decoded.id);
     if(!user) {
         return res.status(401).json({
@@ -23,4 +24,10 @@ export async function authMiddleware(req, res, next) {
     }
     req.user = user;
     next();
+    } catch (error) {
+        return res.status(401).json({
+            message: 'Unauthorized',
+        })
+    }
+    
 }

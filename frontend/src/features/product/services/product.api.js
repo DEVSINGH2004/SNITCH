@@ -7,5 +7,6 @@ const productApi = axios.create({
 
 export const createProduct = async (formData) => {
     const response = await productApi.post('/', formData)
+    console.log(response)
     return response.data
 }

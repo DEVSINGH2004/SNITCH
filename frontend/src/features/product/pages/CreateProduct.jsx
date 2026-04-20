@@ -41,11 +41,11 @@ const CreateProduct = () => {
        data.append('description', formData.description)
        data.append('amount', formData.amount)
        data.append('currency', formData.currency)
-       images.forEach((image) => {
-        data.append('images', image)
+       images.forEach((img) => {
+        data.append('images', img.file)
        })
        const response = await handleCreateProduct(data)
-       console.log(response)
+       console.log(response.data)
        navigate('/');
       } catch(err){
         console.log(err)

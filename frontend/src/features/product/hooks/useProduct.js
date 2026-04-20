@@ -5,6 +5,7 @@ export const useProduct = () => {
     const handleCreateProduct = async (formData) => {
         try {
             const response = await createProduct(formData)
+            console.log(response)
             return response.data
         } catch (error) {
             console.log(error)
