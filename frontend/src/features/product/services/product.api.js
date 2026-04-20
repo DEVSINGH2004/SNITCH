@@ -10,3 +10,9 @@ export const createProduct = async (formData) => {
     console.log(response)
     return response.data
 }
+
+export const getAllProducts = async () => {
+    const response = await productApi.get('/showProduct')
+    console.log(response.data)
+    return response.data
+}
