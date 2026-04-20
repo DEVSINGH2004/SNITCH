@@ -24,3 +24,13 @@ export async function createProduct(req, res) {
         product,
     })
 }
+
+export async function showProduct(req,res){
+    const user = req.user;
+    console.log(user);
+    const products  = await productModel.find({seller: user.id});
+    res.status(200).json({
+        message: 'Show Product successfully',
+        products,
+    })
+}
